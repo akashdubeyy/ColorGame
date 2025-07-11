@@ -25,13 +25,21 @@ function App() {
     setTargetColor(getRandomColor());
     setUserColor({ r: 0, g: 0, b: 0 });
     setShowResult(false);
+    setAccuracy(null);
   };
 
   return (
     <Container maxWidth="sm">
-      <Typography variant="h4" align="center" gutterBottom>RGB Color Match Game</Typography>
+      <Typography variant="h4" align="center" gutterBottom>
+        RGB Color Match Game
+      </Typography>
       <ColorDisplay targetColor={targetColor} userColor={userColor} />
-      <RGBSliders userColor={userColor} onChange={handleSliderChange} />
+      <RGBSliders
+        userColor={userColor}
+        correctColor={targetColor}
+        showCorrect={showResult}
+        onChange={handleSliderChange}
+      />
       {!showResult ? (
         <Box textAlign="center" mt={3}>
           <Button variant="contained" onClick={handleSubmit}>Submit</Button>
